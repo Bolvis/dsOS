@@ -6,7 +6,9 @@ RUN apt-get install -y nasm
 RUN apt-get install -y xorriso
 RUN apt-get install -y grub-pc-bin
 RUN apt-get install -y grub-common
+RUN apt-get install -y git
 
 
-VOLUME /root/env
-WORKDIR /root/env
+RUN git clone https://github.com/Bolvis/dsOS
+RUN cd dsOS
+RUN make build-x86_64 
