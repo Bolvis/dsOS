@@ -6,7 +6,7 @@ SECTIONS
 
     .boot :
     {
-        KEEP(*(.multiboot2_header))
+        KEEP(*(.multiboot_header))
     }
 
     .text :
