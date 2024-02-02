@@ -11,4 +11,4 @@ RUN apt-get install -y git
 
 RUN git clone https://github.com/Bolvis/dsOS
 RUN cd dsOS
-RUN make build-x86_64 
+# RUN make build-x86_64 
