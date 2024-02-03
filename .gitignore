@@ -2,3 +2,4 @@ target/x86_64/iso/boot/kernel.bin
 build
 dist
 .vscode
+.idea
