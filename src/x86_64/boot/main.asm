@@ -4,30 +4,30 @@ extern long_mode_start
 section .text
 bits 32
 start:
-    mov esp, stack_top
+	mov esp, stack_top
 
-    call check_multiboot
-    call cehck_cpuid
-    call check_long_mode
+	call check_multiboot
+	call cehck_cpuid
+	call check_long_mode
 
-    call setup_page_tables
+	call setup_page_tables
 	call enable_paging
 
-    lgdt [gdt64.pointer]
+	lgdt [gdt64.pointer]
 	jmp gdt64.code_segment:long_mode_start
 
 	hlt
 
 check_multiboot:
-    cmp eax, 0x36d76289
-    jne .no_multiboot
+	cmp eax, 0x36d76289
+	jne .no_multiboot
 	ret
 .no_multiboot:
-    mov al, "M"
-    jmp error
+	mov al, "M"
+	jmp error
 
 cehck_cpuid:
-    pushfd
+	pushfd
 	pop eax
 	mov ecx, eax
 	xor eax, 1 << 21
@@ -117,13 +117,13 @@ error:
 section .bss
 align 4096
 page_table_l4:
-    resb 4096
+	resb 4096
 page_table_l3:
-    resb 4096
+	resb 4096
 page_table_l2:
-    resb 4096
+	resb 4096
 stack_bottom:
-    resb 4096 * 4
+	resb 4096 * 4
 stack_top:
 
 section .rodata
